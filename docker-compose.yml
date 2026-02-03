@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis-pubsub
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:7
+    container_name: mongo-pubsub
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=main
+      - MONGO_INITDB_ROOT_PASSWORD=main123
+    restart: unless-stopped
+
+  publisher:
+    build: .
+    container_name: article-publisher
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: python publisher.py
+
+  consumer:
+    build: .
+    container_name: article-consumer
+    depends_on:
+      - redis
+      - mongo
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - MONGO_DB=my_articles_db
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: python consumer.py
