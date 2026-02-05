@@ -33,7 +33,7 @@ services:
 
   consumer:
     build: .
-    container_name: article-consumer
+    # container_name: article-consumer # removed this line to scale
     depends_on:
       - redis
       - mongo
