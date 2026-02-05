@@ -3,6 +3,9 @@
 ## Description:
 This is a pub-sub pipeline that scrapes articles from a JSON file and stores them in a MongoDB database.
 
+## Workflow Diagram
+![WorkflowDiagram](WorkflowDiagram.drawio.png)
+
 ## How to run:
 1. Run `docker-compose up -d --build` to start the containers.
 2. Run `docker-compose down -v` to stop the containers.
