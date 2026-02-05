@@ -6,6 +6,19 @@ This is a pub-sub pipeline that scrapes articles from a JSON file and stores the
 ## Workflow Diagram
 ![WorkflowDiagram](WorkflowDiagram.drawio.png)
 
+## ERD Diagram
+┌────────────────────────────┐
+│ articles │
+├───────────────┬────────────┤
+│ Field Name │ Data Type │
+├───────────────┼────────────┤
+│ _id │ ObjectId │ ← MongoDB generated primary key
+│ id │ string │ ← article identifier from JSON
+│ url │ string │ ← article URL
+│ title │ string │ ← scraped article title
+│ priority │ string │ ← low / medium / high
+│ processed_at │ datetime │ ← timestamp when consumer processed it
+
 ## How to run:
 1. Run `docker-compose up -d --build` to start the containers.
 2. Run `docker-compose down -v` to stop the containers.
