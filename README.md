@@ -48,6 +48,9 @@ docker run -d --name mongo-pubsub
 ```
 docker ps
 ```
+## Additional Features
+- Article Priority Popping (prioritized higher priority articles)
+- Continuous Queue Monitoring (loops to check if there are new entries in redis queue)
 
 
 ## Instructions for running with Docker:
