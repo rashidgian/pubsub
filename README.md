@@ -33,5 +33,30 @@ docker ps
 
 ## Instructions for running with Docker:
 1. Make sure Docker is installed on your system.
-2. Run `docker-compose up -d --build` to start the containers.
-3. Run `docker-compose down -v` to stop the containers.
+2. Build Docker images
+```
+docker-compose up --build
+```
+3. Start all services
+```
+docker-compose up -d
+```
+4. Check status
+```
+docker-compose ps
+```
+5. Check reddis queue (optional)
+```
+docker exec redis redis-cli
+```
+6. Check mongodb (optional)
+```
+docker-compose exec mongo mongosh -u main -p main123 --authenticationDatabase admin
+use my_articles_db
+db.articles.find().pretty()
+```
+7. Stop all services
+```
+docker-compose down -v
+```
+
