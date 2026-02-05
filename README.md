@@ -7,7 +7,7 @@ This is a pub-sub pipeline that scrapes articles from a JSON file and stores the
 ![WorkflowDiagram](WorkflowDiagram.drawio.png)
 
 ## Articles Collection ERD
-
+```
 ┌────────────────────────────┐
 │        articles            │
 ├───────────────┬────────────┤
@@ -21,7 +21,7 @@ This is a pub-sub pipeline that scrapes articles from a JSON file and stores the
 │ processed_at  │ datetime   │
 └───────────────┴────────────┘
 
-
+```
 ## How to run:
 1. Run `docker-compose up -d --build` to start the containers.
 2. Run `docker-compose down -v` to stop the containers.
